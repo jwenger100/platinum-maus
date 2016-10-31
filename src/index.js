@@ -10,6 +10,7 @@ import Studs from './components/studs.js';
 import Learn from './components/learn.js';
 import NewKitten from './components/newKitten.js';
 import AboutMaus from './components/aboutMaus.js';
+import AboutUs from './components/aboutUs.js';
 import { Router, Route, hashHistory } from 'react-router';
 
 ReactDOM.render((
@@ -20,7 +21,7 @@ ReactDOM.render((
         <Route path="kittens" component={Kittens} />
         <Route path="queens" component={Queens} />
         <Route path="studs" component={Studs} />
-        <Route path="Learn" component={NewKitten} />
+        <Route path="Learn" component={AboutUs} />
         <Route path="contact" component={ContactUs} />
     </Route>
   </Router>
