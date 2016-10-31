@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import LinkButton from './ui/linkButton.jsx';
 import '../style.css';
 
 class Header extends Component {
@@ -11,12 +11,12 @@ class Header extends Component {
           
           <div className="w3-padding-32">
             <div className="w3-btn-bar w3-border w3-show-inline-block">
-              <Link to="/home" className="w3-btn w3-light-grey">Home</Link>
-              <Link to="/kittens" className="w3-btn">Kittens Available</Link>
-              <Link to="/queens" className="w3-btn w3-hide-small">Queens</Link>
-              <Link to="/studs" className="w3-btn w3-hide-small">Studs</Link>
-              <Link to="/learn" className="w3-btn w3-hide-small">Learn</Link>
-              <Link to="/contact" className="w3-btn">Contact Us</Link>
+              <LinkButton to="/home" className="w3-btn" selected="true" linkName="Home"></LinkButton>
+              <LinkButton to="/kittens" className="w3-btn" linkName="Kittens Available"></LinkButton>
+              <LinkButton to="/queens" className="w3-btn w3-hide-small" linkName="Queens"></LinkButton>
+              <LinkButton to="/studs" className="w3-btn w3-hide-small" linkName="Studs"></LinkButton>
+              <LinkButton to="/learn" className="w3-btn w3-hide-small" linkName="Learn"></LinkButton>
+              <LinkButton to="/contact" className="w3-btn" linkName="Contact Us"></LinkButton>
             </div>
           </div>
       </header>
