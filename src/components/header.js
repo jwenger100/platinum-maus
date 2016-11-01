@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinkButton from './ui/linkButton.jsx';
+import Menu from './ui/menu.jsx';
 import '../style.css';
 
 class Header extends Component {
@@ -10,14 +10,7 @@ class Header extends Component {
           <h1 className="w3-xlarge">By Design</h1>
           
           <div className="w3-padding-32">
-            <div className="w3-btn-bar w3-border w3-show-inline-block">
-              <LinkButton to="/home" className="w3-btn" selected="true" linkName="Home"></LinkButton>
-              <LinkButton to="/kittens" className="w3-btn" linkName="Kittens Available"></LinkButton>
-              <LinkButton to="/queens" className="w3-btn w3-hide-small" linkName="Queens"></LinkButton>
-              <LinkButton to="/studs" className="w3-btn w3-hide-small" linkName="Studs"></LinkButton>
-              <LinkButton to="/learn" className="w3-btn w3-hide-small" linkName="Learn"></LinkButton>
-              <LinkButton to="/contact" className="w3-btn" linkName="Contact Us"></LinkButton>
-            </div>
+            <Menu pathname={this.props.pathname} selectedCss="w3-light-grey"/>
           </div>
       </header>
     );

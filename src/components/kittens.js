@@ -20,19 +20,19 @@ class Kittens extends Component {
               <div className="w3-col s6 w3-center">
                 <img src={Starlight} role="presentation" className="pictureLeftColumn"></img>
               </div>
-              <div className="w3-col s6 w3-center w3-margin-top">Stardust (reserved)</div>
+              <div className="w3-col s6 w3-center w3-margin-top-large">Stardust (reserved)</div>
             </div>
             <div className="w3-row w3-padding-8">
               <div className="w3-col s6 w3-center">
                 <img src={Starbright} role="presentation" className="pictureLeftColumn"></img>
               </div>
-              <div className="w3-col s6 w3-center w3-margin-top">Zoella (reserved)</div>
+              <div className="w3-col s6 w3-center w3-margin-top-large">Zoella (reserved)</div>
             </div>
             <div className="w3-row w3-padding-8">
               <div className="w3-col s6 w3-center">
                 <img src={Penelope} role="presentation" className="pictureLeftColumn"></img>
               </div>
-              <div className="w3-col s6 w3-center w3-margin-top">Penelope (reserved)</div>
+              <div className="w3-col s6 w3-center w3-margin-top-large">Penelope (reserved)</div>
             </div>
         </div>
     );
