@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-//import LinkButton from './ui/linkButton.jsx';
+import cx from 'classnames';
 import { Link } from 'react-router';
-import update from 'immutability-helper';
 
+//TODO: If the user already has the page loaded, and they type in a new route, the activeElement does NOT update.
 class Menu extends Component {
 	constructor(props) {
 	    super(props);
+	
 	    this.state = {
 	   		links: [
 	   			{name:'Home', to:'/home', id:1, defaultCss:'w3-btn', selectedCss:''},
@@ -16,25 +17,25 @@ class Menu extends Component {
 	   			{name:'Contact Us', to:'/contact', id:6, defaultCss:'w3-btn', selectedCss:''}
 	   		]
 	    };
-	    var links = this.state.links; 
-	    for(var l of this.state.links) {
-	    	var css = props.pathname === l.to ? l.defaultCss + ' ' + this.props.selectedCss : l.defaultCss;
-	    	var idx = l.id-1;
- 			var updatedCss = update(links[idx], {selectedCss: {$set: css}});
- 			var newLink = update(links, {
- 				$splice: [[idx, 1, updatedCss]]
- 			});
- 			this.state.links[idx] = newLink[idx];
-	    }
+	  	//Find initially selected route
+	  	var initialSelectedId = 0;
+	   	for(var l of this.state.links) {
+	   		if(props.pathname === l.to) {
+	   			initialSelectedId = l.id;
+	   		}
+	   	}
+	   	this.state.selectedId = initialSelectedId;
 	    // This binding is necessary to make `this` work in the callback
 	    this.onItemClick = this.onItemClick.bind(this);
   	}
+
  	render() {
 		return (
 		  <div className="w3-btn-bar w3-border w3-show-inline-block">
 		  	{this.state.links.map(l => {
+		  		var currentClass = cx(l.defaultCss, { [this.props.selectedCss] : l.id === this.state.selectedId });
 		  		return (
-		  			<Link to={l.to} onClick={this.onItemClick.bind(this, l.id)} key={l.id} className={l.selectedCss}>{l.name}</Link>
+		  			<Link to={l.to} onClick={this.onItemClick.bind(this, l.id)} key={l.id} className={currentClass}>{l.name}</Link>
 		  		)}
 		  	)}
 		  </div>
@@ -42,20 +43,8 @@ class Menu extends Component {
   	}
 
  	onItemClick(key) {
- 		var links = this.state.links; 
- 		var id = key;
- 		var tempLinks = [];
- 		for(var l of links) {
- 			var css = id === l.id ? l.defaultCss + ' ' + this.props.selectedCss : l.defaultCss;
- 			var idx = l.id-1;
- 			var updatedCss = update(links[idx], {selectedCss: {$set: css}});
- 			var newLink = update(links, {
- 				$splice: [[idx, 1, updatedCss]]
- 			});
- 			tempLinks.push(newLink[idx]);
- 		}
  		this.setState({
- 			links:tempLinks
+ 			selectedId:key
  		});
   	}
 }
