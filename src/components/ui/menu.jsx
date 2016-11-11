@@ -7,24 +7,28 @@ class Menu extends Component {
 	constructor(props) {
 	    super(props);
 	
-	    this.state = {
-	   		links: [
-	   			{name:'Home', to:'/home', id:1, defaultCss:'w3-btn', selectedCss:''},
-	   			{name:'Kittens Available', to:'/kittens', id:2, defaultCss:'w3-btn', selectedCss:''},
-	   			{name:'Queens', to:'/queens', id:3, defaultCss:'w3-btn w3-hide-small', selectedCss:''},
-	   			{name:'Studs', to:'/studs', id:4, defaultCss:'w3-btn w3-hide-small', selectedCss:''},
-	   			{name:'Learn', to:'/learn', id:5, defaultCss:'w3-btn w3-hide-small', selectedCss:''},
-	   			{name:'Contact Us', to:'/contact', id:6, defaultCss:'w3-btn', selectedCss:''}
-	   		]
-	    };
+	   
+	   	var links = [
+   			{name:'Home', to:'/home', id:1, defaultCss:'w3-btn'},
+   			{name:'Kittens Available', to:'/kittens', id:2, defaultCss:'w3-btn'},
+   			{name:'Queens', to:'/queens', id:3, defaultCss:'w3-btn w3-hide-small'},
+   			{name:'Studs', to:'/studs', id:4, defaultCss:'w3-btn w3-hide-small'},
+   			{name:'Learn', to:'/learn', id:5, defaultCss:'w3-btn w3-hide-small'},
+   			{name:'Contact Us', to:'/contact', id:6, defaultCss:'w3-btn'}
+   		];
+	    
 	  	//Find initially selected route
 	  	var initialSelectedId = 0;
-	   	for(var l of this.state.links) {
+	   	for(var l of links) {
 	   		if(props.pathname === l.to) {
 	   			initialSelectedId = l.id;
 	   		}
 	   	}
-	   	this.state.selectedId = initialSelectedId;
+	   	this.state = {
+	   		selectedId: initialSelectedId,
+	   		links: links
+	   	};
+	   	//this.setState({ selectedId: initialSelectedId });
 	    // This binding is necessary to make `this` work in the callback
 	    this.onItemClick = this.onItemClick.bind(this);
   	}
