@@ -34,3 +34,7 @@
   width:80%;
   float:right;
 }
+
+.paddingLargeTop {
+  padding-top:128px!important;
+}

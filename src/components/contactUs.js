@@ -56,11 +56,21 @@ class ContactUs extends Component {
                             </div>
                             <div className="form-group">
                                 <label for="genderSelect">Preferred Gender</label>
-                                <select id="genderSelect" className="form-control text-muted" value={this.state.gender} onChange={this.handleChange('gender')} placeholder="Choose a gender">
-                                    <option value="U">Choose a gender</option>
-                                    <option value="M">Male</option>
-                                    <option value="F">Female</option>
-                                    <option value="D">No Preference</option>
+                                <select id="genderSelect" className="form-control text-muted" value={this.state.gender} onChange={this.handleChange('gender')}>
+                                    <option value="Unselected">Choose a gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="NoPref">No Preference</option>
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label for="colorSelect">Preferred Color</label>
+                                <select id="colorSelect" className="form-control text-muted" value={this.state.color} onChange={this.handleChange('color')}>
+                                    <option value="Unselected">Choose a color</option>
+                                    <option value="Silver">Silver</option>
+                                    <option value="Bronze">Bronze</option>
+                                    <option value="Smoke">Smoke</option>
+                                    <option value="NoPref">No Preference</option>
                                 </select>
                             </div>
                             <div className="form-group">
