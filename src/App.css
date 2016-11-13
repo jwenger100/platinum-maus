@@ -31,10 +31,11 @@
 }
 
 .pictureLeftColumn {
-  width:80%;
-  float:right;
+  width: 80%;
+  float: right;
 }
 
 .paddingLargeTop {
-  padding-top:128px!important;
+  padding-top: 64px!important;
+  padding-bottom: 64px!important;
 }
