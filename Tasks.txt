@@ -5,3 +5,5 @@
 5. Add clear form capability for mailing list
 6. Add data store for mailing list subscriptions
 7. Add unsubscribe functionality
+8. Change app.css to use dashes instead of camel casing to match bootstrap
+9. Add checkbox for mailing list

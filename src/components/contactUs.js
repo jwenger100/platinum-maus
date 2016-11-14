@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+
 var server = 'http://localhost:3001',
-    $ = require('jquery-ajax');
+    $ = require('jquery-ajax'),
+    errorCssClasses = 'text-danger background-white';
 
 class ContactUs extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            name: '',
+            email: '',
+            phoneNumber: '',
+            gender: 'Unselected',
+            color: 'Unselected',
+            message: '',
+            successMessage: '',
+            successMailingMessage: '',
+            messageCss: '',
+            messageMailingCss:''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -15,6 +26,7 @@ class ContactUs extends Component {
     }
 
     handleSubmit(event) {
+        var self = this;
         var data = {
             name: this.state.name,
             email: this.state.email,
@@ -23,6 +35,7 @@ class ContactUs extends Component {
             color: this.state.color,
             message: this.state.message
         };
+        self.clearLabels();
         $.ajax({
             type: 'POST',
             url: server + '/contactUs',
@@ -31,33 +44,42 @@ class ContactUs extends Component {
             dataType:'json'
         })
         .done(function(data) {
-            //TODO: implement clearForm and success message.
-            //self.clearForm()
-            console.log('success!');
+            self.clearForm()
+            self.setState({
+                successMessage: 'Form Successfully Submitted!'
+            });
         })
         .fail(function(jqXhr) {
-            console.log('failed to register');
+            self.setState({
+                successMessage: 'Error submitting form! If the problem persists email platinummaus@gmail.com.',
+                messageCss: errorCssClasses
+            });
         });
         event.preventDefault();
     }
 
     handleMailingList(event) {
+        var self = this;
         var data = {
-            email: this.state.mailingListEmail
+            email: self.state.mailingListEmail
         };
+        self.clearLabels();
         $.ajax({
             type: 'POST',
             url: server + '/subscribeToMailer',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data),
             dataType:'json'
-        })
-        .done(function(data) {
-            //self.clearForm()
-            console.log('success!');
-        })
-        .fail(function(jqXhr) {
-            console.log('failed to register');
+        }).done(function(data) {
+            self.clearMailingForm();
+            self.setState({
+                successMailingMessage: 'Successfully Subscribed To Mailing List!',
+            });
+        }).fail(function(jqXhr) {
+            self.setState({
+                successMailingMessage: 'Error Subscribing To Mailing List!  If the problem persists email platinummaus@gmail.com.',
+                messageMailingCss: errorCssClasses
+            });
         });
         event.preventDefault();
     }
@@ -68,6 +90,32 @@ class ContactUs extends Component {
             state[key] = e.target.value;
             this.setState(state);
         }.bind(this);
+    }
+
+    clearForm() {
+        this.setState({
+            name: '',
+            email: '',
+            phoneNumber: '',
+            gender: 'Unselected',
+            color: 'Unselected',
+            message:''
+        });
+    }
+
+    clearMailingForm() {
+        this.setState({
+            mailingListEmail: ''
+        });
+    }
+
+    clearLabels() {
+        this.setState({
+            successMessage: '',
+            successMailingMessage: '',
+            messageCss: '',
+            messageMailingCss: ''
+        });
     }
 
     render() {
@@ -85,6 +133,13 @@ class ContactUs extends Component {
                         <div className="col-sm-3">&nbsp;</div>
                     </div> 
                     <br/>
+                    <div className="row">
+                        <div className="col-sm-3">&nbsp;</div>
+                        <div className="col-sm-6 text-center">
+                            <h4 className={this.state.messageCss}>{this.state.successMessage}</h4>
+                        </div>
+                        <div className="col-sm-3">&nbsp;</div>
+                    </div> 
                     <div className="row">
                         <div className="col-sm-3">&nbsp;</div>
                         <div className="col-sm-6">     
@@ -136,10 +191,24 @@ class ContactUs extends Component {
                     </div>
                     <div className="row">
                         <div className="col-sm-3">&nbsp;</div>
-                        <div className="col-sm-6">
-                           <form className="form-inline" onSubmit={this.handleMailingList}>
+                        <div className="col-sm-6 text-center">
+                            <h4 className={this.state.messageMailingCss}>{this.state.successMailingMessage}</h4>
+                        </div>
+                        <div className="col-sm-3">&nbsp;</div>
+                    </div> 
+                    <div className="row">
+                        <div className="col-sm-3">&nbsp;</div>
+                        <div className="col-sm-6 text-center">
+                            <h4>Subscribe to mailing list for updates on future litters.</h4>
+                        </div>
+                        <div className="col-sm-3">&nbsp;</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-3">&nbsp;</div>
+                        <div className="col-sm-6 text-center">
+                            <form className="form-inline" onSubmit={this.handleMailingList}>
                                 <div className="form-group">
-                                    <label htmlFor="mailingListInput">Subscribe to mailing list: &nbsp;</label>
+                                    <label htmlFor="mailingListInput">Email: &nbsp;</label>
                                     <input type="email" className="form-control text-muted" id="mailingListInput" value={this.state.mailingListEmail} onChange={this.handleChange('mailingListEmail')} placeholder="Email" autoComplete="email" />
                                 </div>
                                 &nbsp;
@@ -147,7 +216,7 @@ class ContactUs extends Component {
                            </form>
                         </div>
                         <div className="col-sm-3">&nbsp;</div>
-                    </div>
+                    </div> 
                 </div>
                 <br/>
             </div>
