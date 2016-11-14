@@ -69,89 +69,90 @@ class ContactUs extends Component {
             this.setState(state);
         }.bind(this);
     }
-  render() {
-    return (
-        <div>
-            <div className="text-center fancyHeading"><h1>Contact Us</h1></div>
-            <br/>
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-3">&nbsp;</div>
-                    <div className="col-sm-6 text-center">
-                        <p>Email: platinummaus@gmail.com <br/>
-                            Phone: 360-990-9303</p>
-                    </div>
-                    <div className="col-sm-3">&nbsp;</div>
-                </div> 
+
+    render() {
+        return (
+            <div>
+                <div className="text-center fancyHeading"><h1>Contact Us</h1></div>
                 <br/>
-                <div className="row">
-                    <div className="col-sm-3">&nbsp;</div>
-                    <div className="col-sm-6">     
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="nameInput">Name</label>
-                                <input type="text" className="form-control text-muted" id="nameInput" value={this.state.name} onChange={this.handleChange('name')} placeholder="Name" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="emailInput">Email</label>
-                                <input type="email" className="form-control text-muted" id="emailInput" value={this.state.email} onChange={this.handleChange('email')} placeholder="Email" autoComplete="email" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="phoneNumberInput">Phone Number</label>
-                                <input type="text" className="form-control text-muted" id="phoneNumberInput" value={this.state.phoneNumber} onChange={this.handleChange('phoneNumber')} placeholder="Phone Number" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="genderSelect">Preferred Gender</label>
-                                <select id="genderSelect" className="form-control text-muted" value={this.state.gender} onChange={this.handleChange('gender')}>
-                                    <option value="Unselected">Choose a gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="NoPref">No Preference</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="colorSelect">Preferred Color</label>
-                                <select id="colorSelect" className="form-control text-muted" value={this.state.color} onChange={this.handleChange('color')}>
-                                    <option value="Unselected">Choose a color</option>
-                                    <option value="Silver">Silver</option>
-                                    <option value="Bronze">Bronze</option>
-                                    <option value="Smoke">Smoke</option>
-                                    <option value="NoPref">No Preference</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="messageTextArea">Message</label>
-                                <textarea id="messageTextArea" className="form-control text-muted" value={this.state.message} onChange={this.handleChange('message')} placeholder="Message" />
-                            </div>
-                            <div className="form-group text-center">
-                                <button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
-                            </div>
-                        </form>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-3">&nbsp;</div>
+                        <div className="col-sm-6 text-center">
+                            <p>Email: platinummaus@gmail.com <br/>
+                                Phone: 360-990-9303</p>
+                        </div>
+                        <div className="col-sm-3">&nbsp;</div>
+                    </div> 
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-3">&nbsp;</div>
+                        <div className="col-sm-6">     
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="nameInput">Name</label>
+                                    <input type="text" className="form-control text-muted" id="nameInput" value={this.state.name} onChange={this.handleChange('name')} placeholder="Name" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="emailInput">Email</label>
+                                    <input type="email" className="form-control text-muted" id="emailInput" value={this.state.email} onChange={this.handleChange('email')} placeholder="Email" autoComplete="email" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="phoneNumberInput">Phone Number</label>
+                                    <input type="text" className="form-control text-muted" id="phoneNumberInput" value={this.state.phoneNumber} onChange={this.handleChange('phoneNumber')} placeholder="Phone Number" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="genderSelect">Preferred Gender</label>
+                                    <select id="genderSelect" className="form-control text-muted" value={this.state.gender} onChange={this.handleChange('gender')}>
+                                        <option value="Unselected">Choose a gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="NoPref">No Preference</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="colorSelect">Preferred Color</label>
+                                    <select id="colorSelect" className="form-control text-muted" value={this.state.color} onChange={this.handleChange('color')}>
+                                        <option value="Unselected">Choose a color</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Bronze">Bronze</option>
+                                        <option value="Smoke">Smoke</option>
+                                        <option value="NoPref">No Preference</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="messageTextArea">Message</label>
+                                    <textarea id="messageTextArea" className="form-control text-muted" value={this.state.message} onChange={this.handleChange('message')} placeholder="Message" />
+                                </div>
+                                <div className="form-group text-center">
+                                    <button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="col-sm-3">&nbsp;</div>
                     </div>
-                    <div className="col-sm-3">&nbsp;</div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12"><hr/></div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-3">&nbsp;</div>
-                    <div className="col-sm-6">
-                       <form className="form-inline" onSubmit={this.handleMailingList}>
-                            <div className="form-group">
-                                <label htmlFor="mailingListInput">Subscribe to mailing list: &nbsp;</label>
-                                <input type="email" className="form-control text-muted" id="mailingListInput" value={this.state.mailingListEmail} onChange={this.handleChange('mailingListEmail')} placeholder="Email" autoComplete="email" />
-                            </div>
-                            &nbsp;
-                            <button type="submit" className="btn btn-default" onClick={this.handleMailingList}>Subscribe</button>
-                       </form>
+                    <div className="row">
+                        <div className="col-sm-12"><hr/></div>
                     </div>
-                    <div className="col-sm-3">&nbsp;</div>
+                    <div className="row">
+                        <div className="col-sm-3">&nbsp;</div>
+                        <div className="col-sm-6">
+                           <form className="form-inline" onSubmit={this.handleMailingList}>
+                                <div className="form-group">
+                                    <label htmlFor="mailingListInput">Subscribe to mailing list: &nbsp;</label>
+                                    <input type="email" className="form-control text-muted" id="mailingListInput" value={this.state.mailingListEmail} onChange={this.handleChange('mailingListEmail')} placeholder="Email" autoComplete="email" />
+                                </div>
+                                &nbsp;
+                                <button type="submit" className="btn btn-default" onClick={this.handleMailingList}>Subscribe</button>
+                           </form>
+                        </div>
+                        <div className="col-sm-3">&nbsp;</div>
+                    </div>
                 </div>
+                <br/>
             </div>
-            <br/>
-        </div>
-    );
-  }
+        );
+    }
 }
 
 export default ContactUs;
