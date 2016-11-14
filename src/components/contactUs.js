@@ -18,7 +18,8 @@ class ContactUs extends Component {
             successMessage: '',
             successMailingMessage: '',
             messageCss: '',
-            messageMailingCss:''
+            messageMailingCss:'',
+            subscribeToMailer: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -27,7 +28,7 @@ class ContactUs extends Component {
 
     handleSubmit(event) {
         var self = this;
-        var data = {
+        var payload = {
             name: this.state.name,
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
@@ -40,14 +41,31 @@ class ContactUs extends Component {
             type: 'POST',
             url: server + '/contactUs',
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(data),
+            data: JSON.stringify(payload),
             dataType:'json'
         })
         .done(function(data) {
-            self.clearForm()
-            self.setState({
-                successMessage: 'Form Successfully Submitted!'
-            });
+            if(self.state.subscribeToMailer) {
+                self.subscribeToMailerService(payload)
+                    .done(function(data) {
+                        self.clearForm();
+                        self.setState({
+                            successMessage: 'Form Successfully Submitted!'
+                        }); 
+                    })
+                    .fail(function(jqXhr) {
+                        self.setState({
+                            successMessage: 'Error submitting form (subscribing)! If the problem persists email platinummaus@gmail.com.',
+                            messageCss: errorCssClasses
+                        });
+                    });
+            } else {
+                self.clearForm();
+                self.setState({
+                    successMessage: 'Form Successfully Submitted!'
+                }); 
+            }
+            
         })
         .fail(function(jqXhr) {
             self.setState({
@@ -64,30 +82,35 @@ class ContactUs extends Component {
             email: self.state.mailingListEmail
         };
         self.clearLabels();
-        $.ajax({
-            type: 'POST',
-            url: server + '/subscribeToMailer',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(data),
-            dataType:'json'
-        }).done(function(data) {
-            self.clearMailingForm();
-            self.setState({
-                successMailingMessage: 'Successfully Subscribed To Mailing List!',
+        self.subscribeToMailerService(data)
+            .done(function(data) {
+                self.clearMailingForm();
+                self.setState({
+                    successMailingMessage: 'Successfully Subscribed To Mailing List!',
+                });
+            }).fail(function(jqXhr) {
+                self.setState({
+                    successMailingMessage: 'Error Subscribing To Mailing List!  If the problem persists email platinummaus@gmail.com.',
+                    messageMailingCss: errorCssClasses
+                });
             });
-        }).fail(function(jqXhr) {
-            self.setState({
-                successMailingMessage: 'Error Subscribing To Mailing List!  If the problem persists email platinummaus@gmail.com.',
-                messageMailingCss: errorCssClasses
-            });
-        });
         event.preventDefault();
     }
 
-    handleChange(key) {
+    subscribeToMailerService(postData) {
+        return $.ajax({
+            type: 'POST',
+            url: server + '/subscribeToMailer',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(postData),
+            dataType:'json'
+        });
+    }
+
+    handleChange(key, checked) {
         return function (e) {
             var state = {};
-            state[key] = e.target.value;
+            state[key] = checked ? e.target.checked : e.target.value;
             this.setState(state);
         }.bind(this);
     }
@@ -178,6 +201,11 @@ class ContactUs extends Component {
                                 <div className="form-group">
                                     <label htmlFor="messageTextArea">Message</label>
                                     <textarea id="messageTextArea" className="form-control text-muted" value={this.state.message} onChange={this.handleChange('message')} placeholder="Message" />
+                                </div>
+                                <div className="checkbox text-center">
+                                    <label>
+                                      <input type="checkbox" checked={this.state.subscribeToMailer} onChange={this.handleChange('subscribeToMailer', true)}/> Subscribe to mailing list
+                                    </label>
                                 </div>
                                 <div className="form-group text-center">
                                     <button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>

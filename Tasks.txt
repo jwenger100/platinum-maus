@@ -1,9 +1,9 @@
-1. Add form success message for contact us.
-2. Add clear form capability on success for contact us.
+1. (DONE) Add form success message for contact us.
+2. (DONE) Add clear form capability on success for contact us.
 3. Check / implement validation
-4. Add form success message for mailing list
-5. Add clear form capability for mailing list
+4. (DONE) Add form success message for mailing list
+5. (DONE) Add clear form capability for mailing list
 6. Add data store for mailing list subscriptions
 7. Add unsubscribe functionality
 8. Change app.css to use dashes instead of camel casing to match bootstrap
-9. Add checkbox for mailing list
+9. (DONE) Add checkbox for mailing list
