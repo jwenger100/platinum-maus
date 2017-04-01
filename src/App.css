@@ -43,3 +43,11 @@
 .background-white {
   background-color: white;
 }
+
+.top-buffer { 
+  margin-top:20px; 
+}
+
+.bottom-buffer {
+  margin-bottom:100px;
+}

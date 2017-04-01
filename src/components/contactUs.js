@@ -3,12 +3,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 var server = 'http://localhost:3001',
     $ = require('jquery-ajax'),
-    errorCssClasses = 'text-danger background-white';
+    errorCssClasses = 'text-danger background-white',
+    _this;
 
 class ContactUs extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        _this = this;
+        _this.state = {
             name: '',
             email: '',
             phoneNumber: '',
@@ -21,22 +23,18 @@ class ContactUs extends Component {
             messageMailingCss:'',
             subscribeToMailer: true
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleMailingList = this.handleMailingList.bind(this);
     }
 
     handleSubmit(event) {
-        var self = this;
         var payload = {
-            name: this.state.name,
-            email: this.state.email,
-            phoneNumber: this.state.phoneNumber,
-            gender: this.state.gender,
-            color: this.state.color,
-            message: this.state.message
+            name: _this.state.name,
+            email: _this.state.email,
+            phoneNumber: _this.state.phoneNumber,
+            gender: _this.state.gender,
+            color: _this.state.color,
+            message: _this.state.message
         };
-        self.clearLabels();
+        _this.clearLabels();
         $.ajax({
             type: 'POST',
             url: server + '/contactUs',
@@ -45,30 +43,30 @@ class ContactUs extends Component {
             dataType:'json'
         })
         .done(function(data) {
-            if(self.state.subscribeToMailer) {
-                self.subscribeToMailerService(payload)
+            if(_this.state.subscribeToMailer) {
+                _this.subscribeToMailerService(payload)
                     .done(function(data) {
-                        self.clearForm();
-                        self.setState({
+                        _this.clearForm();
+                        _this.setState({
                             successMessage: 'Form Successfully Submitted!'
                         }); 
                     })
                     .fail(function(jqXhr) {
-                        self.setState({
+                        _this.setState({
                             successMessage: 'Error submitting form (subscribing)! If the problem persists email platinummaus@gmail.com.',
                             messageCss: errorCssClasses
                         });
                     });
             } else {
-                self.clearForm();
-                self.setState({
+                _this.clearForm();
+                _this.setState({
                     successMessage: 'Form Successfully Submitted!'
                 }); 
             }
             
         })
         .fail(function(jqXhr) {
-            self.setState({
+            _this.setState({
                 successMessage: 'Error submitting form! If the problem persists email platinummaus@gmail.com.',
                 messageCss: errorCssClasses
             });
@@ -77,19 +75,18 @@ class ContactUs extends Component {
     }
 
     handleMailingList(event) {
-        var self = this;
         var data = {
-            email: self.state.mailingListEmail
+            email: _this.state.mailingListEmail
         };
-        self.clearLabels();
-        self.subscribeToMailerService(data)
+        _this.clearLabels();
+        _this.subscribeToMailerService(data)
             .done(function(data) {
-                self.clearMailingForm();
-                self.setState({
+                _this.clearMailingForm();
+                _this.setState({
                     successMailingMessage: 'Successfully Subscribed To Mailing List!',
                 });
             }).fail(function(jqXhr) {
-                self.setState({
+                _this.setState({
                     successMailingMessage: 'Error Subscribing To Mailing List!  If the problem persists email platinummaus@gmail.com.',
                     messageMailingCss: errorCssClasses
                 });
@@ -100,7 +97,7 @@ class ContactUs extends Component {
     subscribeToMailerService(postData) {
         return $.ajax({
             type: 'POST',
-            url: server + '/subscribeToMailer',
+            url: server + '/subscribe',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(postData),
             dataType:'json'
@@ -111,12 +108,12 @@ class ContactUs extends Component {
         return function (e) {
             var state = {};
             state[key] = checked ? e.target.checked : e.target.value;
-            this.setState(state);
-        }.bind(this);
+            _this.setState(state);
+        };
     }
 
     clearForm() {
-        this.setState({
+        _this.setState({
             name: '',
             email: '',
             phoneNumber: '',
@@ -127,13 +124,13 @@ class ContactUs extends Component {
     }
 
     clearMailingForm() {
-        this.setState({
+        _this.setState({
             mailingListEmail: ''
         });
     }
 
     clearLabels() {
-        this.setState({
+        _this.setState({
             successMessage: '',
             successMailingMessage: '',
             messageCss: '',

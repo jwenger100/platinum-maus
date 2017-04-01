@@ -3,7 +3,22 @@
 3. Check / implement validation
 4. (DONE) Add form success message for mailing list
 5. (DONE) Add clear form capability for mailing list
-6. Add data store for mailing list subscriptions
-7. Add unsubscribe functionality
+6. (DONE) Add data store for mailing list subscriptions
+7. (DONE) Add unsubscribe functionality
 8. Change app.css to use dashes instead of camel casing to match bootstrap
 9. (DONE) Add checkbox for mailing list
+10. FIgure out how to secure endpoint
+11. Extract Server from client side app into a setting that can be used in all modules
+12. Implement client side validation
+13. Implement server side validation for service APIS
+14. Extract email password from app.js on server for mailing service.
+15. Implement server side logging
+16. Implement server side validation
+
+Info:
+
+Starting MongoDB:
+https://docs.mongodb.com/getting-started/shell/tutorial/install-mongodb-on-windows/
+
+"D:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath d:\data\db
+

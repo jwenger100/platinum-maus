@@ -1,0 +1,15 @@
+{
+    "mailingListId": 1,
+    "emailAddress": "test@me.com",
+    "name": "Jon Doe"
+},
+{
+    "mailingListId": 2,
+    "emailAddress": "2test@me.com",
+    "name": "Melissa Doe"
+},
+{
+    "mailingListId": 3,
+    "emailAddress": "3test@me.com",
+    "name": "Todd Doe"
+}

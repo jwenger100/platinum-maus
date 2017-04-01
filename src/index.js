@@ -11,6 +11,7 @@ import Learn from './components/learn.js';
 import NewKitten from './components/newKitten.js';
 import AboutMaus from './components/aboutMaus.js';
 import AboutUs from './components/aboutUs.js';
+import SubscriberList from './components/subscriberList.js';
 import { Router, Route, hashHistory } from 'react-router';
 
 ReactDOM.render((
@@ -23,6 +24,7 @@ ReactDOM.render((
         <Route path="studs" component={Studs} />
         <Route path="Learn" component={AboutUs} />
         <Route path="contact" component={ContactUs} />
+        <Route path="subscribers" component={SubscriberList} />
     </Route>
   </Router>
 ), document.getElementById('root'));
