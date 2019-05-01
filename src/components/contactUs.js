@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import Penelope from '../assets/images/Penelope.jpg'
+import Starbright from '../assets/images/Starbright.jpg'
+import Starlight from '../assets/images/Starlight.jpg'
 
 var server = 'http://localhost:3001',
     $ = require('jquery-ajax'),
@@ -154,6 +157,11 @@ class ContactUs extends Component {
                     </div> 
                     <br/>
                     <div className="row">
+                        <div className="col-md-2" />
+                        <img src={Penelope} role="presentation" className="w3-center"></img>
+                        <img src={Starbright} role="presentation" className="w3-center"></img>
+                    </div>      
+                    {/* <div className="row">
                         <div className="col-sm-3">&nbsp;</div>
                         <div className="col-sm-6 text-center">
                             <h4 className={this.state.messageCss}>{this.state.successMessage}</h4>
@@ -241,7 +249,7 @@ class ContactUs extends Component {
                            </form>
                         </div>
                         <div className="col-sm-3">&nbsp;</div>
-                    </div> 
+                    </div>  */}
                 </div>
                 <br/>
             </div>
