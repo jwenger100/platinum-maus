@@ -50,7 +50,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
   - [Surge](#surge)
 - [Something Missing?](#something-missing)
 
-## Updating to New Releases
+## Updating to New Release
 
 Create React App is divided into two packages:
 
