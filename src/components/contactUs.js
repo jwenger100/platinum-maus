@@ -4,7 +4,7 @@ import Penelope from '../assets/images/Penelope.jpg'
 import Starbright from '../assets/images/Starbright.jpg'
 
 var server = 'http://localhost:3001',
-    $ = require('jquery-ajax'),
+    // $ = require('jquery-ajax'),
     errorCssClasses = 'text-danger background-white',
     _this;
 
@@ -37,42 +37,42 @@ class ContactUs extends Component {
             message: _this.state.message
         };
         _this.clearLabels();
-        $.ajax({
-            type: 'POST',
-            url: server + '/contactUs',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(payload),
-            dataType:'json'
-        })
-        .done(function(data) {
-            if(_this.state.subscribeToMailer) {
-                _this.subscribeToMailerService(payload)
-                    .done(function(data) {
-                        _this.clearForm();
-                        _this.setState({
-                            successMessage: 'Form Successfully Submitted!'
-                        }); 
-                    })
-                    .fail(function(jqXhr) {
-                        _this.setState({
-                            successMessage: 'Error submitting form (subscribing)! If the problem persists email platinummaus@gmail.com.',
-                            messageCss: errorCssClasses
-                        });
-                    });
-            } else {
-                _this.clearForm();
-                _this.setState({
-                    successMessage: 'Form Successfully Submitted!'
-                }); 
-            }
+        // $.ajax({
+        //     type: 'POST',
+        //     url: server + '/contactUs',
+        //     contentType: 'application/json; charset=utf-8',
+        //     data: JSON.stringify(payload),
+        //     dataType:'json'
+        // })
+        // .done(function(data) {
+        //     if(_this.state.subscribeToMailer) {
+        //         _this.subscribeToMailerService(payload)
+        //             .done(function(data) {
+        //                 _this.clearForm();
+        //                 _this.setState({
+        //                     successMessage: 'Form Successfully Submitted!'
+        //                 }); 
+        //             })
+        //             .fail(function(jqXhr) {
+        //                 _this.setState({
+        //                     successMessage: 'Error submitting form (subscribing)! If the problem persists email platinummaus@gmail.com.',
+        //                     messageCss: errorCssClasses
+        //                 });
+        //             });
+        //     } else {
+        //         _this.clearForm();
+        //         _this.setState({
+        //             successMessage: 'Form Successfully Submitted!'
+        //         }); 
+        //     }
             
-        })
-        .fail(function(jqXhr) {
-            _this.setState({
-                successMessage: 'Error submitting form! If the problem persists email platinummaus@gmail.com.',
-                messageCss: errorCssClasses
-            });
-        });
+        // })
+        // .fail(function(jqXhr) {
+        //     _this.setState({
+        //         successMessage: 'Error submitting form! If the problem persists email platinummaus@gmail.com.',
+        //         messageCss: errorCssClasses
+        //     });
+        // });
         event.preventDefault();
     }
 
@@ -97,13 +97,13 @@ class ContactUs extends Component {
     }
 
     subscribeToMailerService(postData) {
-        return $.ajax({
-            type: 'POST',
-            url: server + '/subscribe',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(postData),
-            dataType:'json'
-        });
+        // return $.ajax({
+        //     type: 'POST',
+        //     url: server + '/subscribe',
+        //     contentType: 'application/json; charset=utf-8',
+        //     data: JSON.stringify(postData),
+        //     dataType:'json'
+        // });
     }
 
     handleChange(key, checked) {

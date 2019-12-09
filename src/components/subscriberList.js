@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import cx from 'classnames';
 
-var $ = require('jquery-ajax'),
+// var $ = require('jquery-ajax'),
+var
     server = 'http://localhost:3001',
     errorCssClasses = 'text-danger background-white',
     _this;
@@ -21,16 +22,16 @@ class SubscriberList extends React.Component {
     }
 
     componentDidMount() {
-        $.ajax({
-            type: 'GET',
-            url: server + '/subscribers'
-        }).then(res => {     
-            if(res.subscribers) {
-                _this.setState({
-                    subscribers: res.subscribers
-                });
-            }
-        })
+        // $.ajax({
+        //     type: 'GET',
+        //     url: server + '/subscribers'
+        // }).then(res => {     
+        //     if(res.subscribers) {
+        //         _this.setState({
+        //             subscribers: res.subscribers
+        //         });
+        //     }
+        // })
     }
 
     handleRemoveEntry(emailAddress) {
@@ -57,13 +58,13 @@ class SubscriberList extends React.Component {
     }
 
     subscribeToMailerService(postData) {
-        return $.ajax({
-            type: 'POST',
-            url: server + '/unsubscribe',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(postData),
-            dataType:'json'
-        });
+        // return $.ajax({
+        //     type: 'POST',
+        //     url: server + '/unsubscribe',
+        //     contentType: 'application/json; charset=utf-8',
+        //     data: JSON.stringify(postData),
+        //     dataType:'json'
+        // });
     }
 
     render() {
