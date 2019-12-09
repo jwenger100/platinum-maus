@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import KittensPic from '../assets/images/kittens.jpg'
-import Starlight from '../assets/images/Starlight.jpg'
+import Boy1 from '../assets/images/boy1.jpg'
+import Boy2 from '../assets/images/boy2.jpg'
+import Boy3 from '../assets/images/boy3.jpg'
 
 class Kittens extends Component {
   render() {
@@ -8,17 +9,23 @@ class Kittens extends Component {
         <div>
             <div className="w3-row w3-padding-8">
               <div className="w3-col s6 w3-center">
-                <img src={KittensPic} role="presentation" className="pictureLeftColumn"></img>
+                <img src={Boy1} role="presentation" className="pictureLeftColumn"></img>
               </div>
               <div className="w3-col s6 w3-center">
-                <div className="fancyHeading">Available Kittens <br/><br/><br/><br/> Valentino</div>
+                <div className="fancyHeading">Available Kittens - December 2019 <br/><br/><br/><br/> Boy 1</div>
               </div>
             </div>
             <div className="w3-row w3-padding-8">
               <div className="w3-col s6 w3-center">
-                <img src={Starlight} role="presentation" className="pictureLeftColumn"></img>
+                <img src={Boy2} role="presentation" className="pictureLeftColumn"></img>
               </div>
-              <div className="w3-col s6 w3-center w3-margin-top-large"></div>
+              <div className="fancyHeading w3-col s6 w3-center w3-margin-top-large">Boy 2</div>
+            </div>
+            <div className="w3-row w3-padding-8">
+              <div className="w3-col s6 w3-center">
+                <img src={Boy3} role="presentation" className="pictureLeftColumn"></img>
+              </div>
+              <div className="fancyHeading w3-col s6 w3-center w3-margin-top-large">Boy 3</div>
             </div>
         </div>
     );

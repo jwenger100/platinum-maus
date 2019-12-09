@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Penelope from '../assets/images/Penelope.jpg'
 import Starbright from '../assets/images/Starbright.jpg'
-import Starlight from '../assets/images/Starlight.jpg'
 
 var server = 'http://localhost:3001',
     $ = require('jquery-ajax'),
@@ -150,7 +149,7 @@ class ContactUs extends Component {
                     <div className="row">
                         <div className="col-sm-3">&nbsp;</div>
                         <div className="col-sm-6 text-center">
-                            <p>Email: platinummaus@gmail.com <br/>
+                            <p>Email: <a className="text-center" href="mailto:platinummaus@gmail.com?subject=Add to Mailing List">platinummaus@gmail.com</a><br/>
                                 Phone: 360-990-9303</p>
                         </div>
                         <div className="col-sm-3">&nbsp;</div>
