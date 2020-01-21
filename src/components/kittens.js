@@ -12,10 +12,12 @@ class Kittens extends Component {
                 <img src={Boy1} role="presentation" className="pictureLeftColumn"></img>
               </div>
               <div className="w3-col s6 w3-center">
-                <div className="fancyHeading">Available Kittens - December 2019 <br/><br/><br/><br/> Boy 1</div>
+                <div className="fancyHeading">Next Litter Expected - March 2020 <br/></div>
+                <div>Please send us an email to get added to mailing list, we will notify when the next litter arrives!</div>
+                {/* <div className="fancyHeading">Next Litter Expected - March 2020 <br/><br/><br/><br/> Boy 1</div> */}
               </div>
             </div>
-            <div className="w3-row w3-padding-8">
+            {/* <div className="w3-row w3-padding-8">
               <div className="w3-col s6 w3-center">
                 <img src={Boy2} role="presentation" className="pictureLeftColumn"></img>
               </div>
@@ -26,7 +28,7 @@ class Kittens extends Component {
                 <img src={Boy3} role="presentation" className="pictureLeftColumn"></img>
               </div>
               <div className="fancyHeading w3-col s6 w3-center w3-margin-top-large">Boy 3</div>
-            </div>
+            </div> */}
         </div>
     );
   }
