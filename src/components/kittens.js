@@ -12,8 +12,8 @@ class Kittens extends Component {
                 <img src={Boy1} role="presentation" className="pictureLeftColumn"></img>
               </div>
               <div className="w3-col s6 w3-center">
-                <div className="fancyHeading">Next Litter Expected - March 2020 <br/></div>
-                <div>Please send us an email to get added to mailing list, we will notify when the next litter arrives!</div>
+                <div className="fancyHeading">Next Litter Expected - 2021 <br/></div>
+                <div>Due to some restructuring at the cattery, we will be expecting our next litter in 2021. Please send us an email to get added to mailing list, we will notify when the next litter arrives!</div>
                 {/* <div className="fancyHeading">Next Litter Expected - March 2020 <br/><br/><br/><br/> Boy 1</div> */}
               </div>
             </div>
